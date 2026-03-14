@@ -1,0 +1,34 @@
+.hero-container {
+  position: relative;
+}
+
+.mainImage {
+  height: 100vh;
+  width: 100%;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  display: flex;
+  padding: 1rem 1rem;
+  /* background-color: black; */
+  width: 100%;
+}
+
+.nav ul {
+  display: flex;
+  /* margin-left: auto; */
+  gap: 20px;
+}
+
+.nav ul li {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  align-items: center;
+}
+
+.nav ul li Link {
+  color: beige;
+}
