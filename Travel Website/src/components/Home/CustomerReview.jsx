@@ -16,7 +16,7 @@ const data = [
     name: "A truly amazing experience!",
     description:
       "Lorem ipsum dolor sit amet consectetur dese adipiscing helit nullam li sodales, nibh quis viverra laotreet mauris jurna sagitis arcu ut erdiete metus dolor eget lemi.",
-    image: "https://gfxpartner.com/Frolic/images/guide01.png",
+    image: "https://gfxpartner.com/Frolic/images/guide02.png",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const data = [
     name: "A truly amazing experience!",
     description:
       "Lorem ipsum dolor sit amet consectetur dese adipiscing helit nullam li sodales, nibh quis viverra laotreet mauris jurna sagitis arcu ut erdiete metus dolor eget lemi.",
-    image: "https://gfxpartner.com/Frolic/images/guide01.png",
+    image: "https://gfxpartner.com/Frolic/images/guide03.png",
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const data = [
     name: "A truly amazing experience!",
     description:
       "Lorem ipsum dolor sit amet consectetur dese adipiscing helit nullam li sodales, nibh quis viverra laotreet mauris jurna sagitis arcu ut erdiete metus dolor eget lemi.",
-    image: "https://gfxpartner.com/Frolic/images/guide01.png",
+    image: "https://gfxpartner.com/Frolic/images/guide04.png",
   },
 ];
 

@@ -9,7 +9,9 @@ const Navbar = () => {
     <div
       style={{ display: "flex", padding: "2rem 5rem", alignItems: "center" }}
     >
-      <img src={LOGO} style={{ width: "12rem" }} alt="logo" />
+      <Link to="/">
+        <img src={LOGO} style={{ width: "12rem" }} alt="logo" />
+      </Link>
 
       <ul
         style={{

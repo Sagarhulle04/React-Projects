@@ -18,7 +18,7 @@ const CustomerReviewCard = ({ data }) => {
       }}
     >
       <div style={{ marginBottom: "1rem" }}>
-        {[...Array(stars)].map((star) => (
+        {[...Array(stars)].map((_, star) => (
           <span key={star} style={{ color: star < stars ? "#f5a623" : "#ddd" }}>
             ⭐
           </span>
