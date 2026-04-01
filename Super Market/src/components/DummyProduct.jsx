@@ -4,6 +4,7 @@ import Spinners from "./Spinner";
 import { Button, Pagination } from "react-bootstrap";
 import SelectBasicExample from "./Select";
 import { useSearchParams } from "react-router-dom";
+import Filter from "./Filter";
 
 const PAGE_SIZE = 4;
 
@@ -32,8 +33,6 @@ const DummyProduct = () => {
   if (sortBy === "sort-by-price-desc") {
     filteredValue = filteredValue.sort((a, b) => b.price - a.price);
   }
-
-  console.log(dummyData);
 
   useEffect(() => {
     try {
@@ -84,6 +83,10 @@ const DummyProduct = () => {
         />
 
         <SelectBasicExample />
+      </div>
+
+      <div>
+        <Filter />
       </div>
 
       <div className="d-flex gap-3 flex-wrap cursor-pointer">
