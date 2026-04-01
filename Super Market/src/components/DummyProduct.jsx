@@ -14,7 +14,8 @@ const DummyProduct = () => {
   const [start, setStart] = useState(0);
   const [searchParams] = useSearchParams();
 
-  const sortBy = searchParams.get("sortBy") || "sort-by-price-asc";
+  const sortBy = searchParams.get("sortBy");
+  const filterBy = searchParams.get("filter");
 
   let end = start + PAGE_SIZE;
 
@@ -25,6 +26,10 @@ const DummyProduct = () => {
   }
 
   let filteredValue = dummyData;
+
+  if (filterBy && filterBy !== "all") {
+    filteredValue = filteredValue.filter((item) => item.category === filterBy);
+  }
 
   if (sortBy === "sort-by-price-asc") {
     filteredValue = filteredValue.sort((a, b) => a.price - b.price);
@@ -86,7 +91,8 @@ const DummyProduct = () => {
       </div>
 
       <div>
-        <Filter />
+        {" "}
+        <Filter />{" "}
       </div>
 
       <div className="d-flex gap-3 flex-wrap cursor-pointer">

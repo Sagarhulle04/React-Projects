@@ -5,7 +5,7 @@ const SortBy = () => {
   const data = [
     {
       label: "Sort By Price (Asc)",
-      option: "",
+      option: "sort-by-price-asc",
     },
   ];
 
