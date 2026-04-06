@@ -8,7 +8,7 @@ function CardLayout({ data }) {
   // console.log(data);
   const { thumbnail, title, id, description, price } = data;
 
-  const { setCart } = useCart();
+  const { cart, setCart } = useCart();
 
   function handleAddToCart() {
     // console.log(data);
@@ -16,6 +16,7 @@ function CardLayout({ data }) {
       id,
       title,
       thumbnail,
+      quantity: 1,
       description,
       description,
       price,
@@ -23,6 +24,8 @@ function CardLayout({ data }) {
     setCart((cart) => [...cart, obj]);
     alert(`Item added to cart : ${title}`);
   }
+
+  console.log(cart);
 
   return (
     <>

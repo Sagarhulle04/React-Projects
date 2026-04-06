@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardLayout from "./Card";
 import Spinners from "./Spinner";
-import { Button, Pagination } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import SelectBasicExample from "./Select";
 import { useSearchParams } from "react-router-dom";
 import Filter from "./Filter";
@@ -96,9 +96,13 @@ const DummyProduct = () => {
       </div>
 
       <div className="d-flex gap-3 flex-wrap cursor-pointer">
-        {filteredValue.slice(start, end).map((data) => (
-          <CardLayout key={data.id} data={data} />
-        ))}
+        {filteredValue.length === 0 ? (
+          <h1>No Products Found. Explore Another Category</h1>
+        ) : (
+          filteredValue
+            .slice(start, end)
+            .map((data) => <CardLayout key={data.id} data={data} />)
+        )}
       </div>
 
       <div

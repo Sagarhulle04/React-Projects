@@ -1,6 +1,6 @@
 import React from "react";
 import NavigationBar from "./Navbar";
-import { Outlet, useSearchParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
