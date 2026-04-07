@@ -11,7 +11,11 @@ function ProductProvider({ children }) {
 
   async function submitData(e) {
     e.preventDefault();
-    const data = await axios.post(
+    if (!name || !image || !price) {
+      alert("Enter all the fields");
+      return;
+    }
+    await axios.post(
       "https://69d33482336103955f8ea792.mockapi.io/yes/addFlower",
       { name, price, image },
     );

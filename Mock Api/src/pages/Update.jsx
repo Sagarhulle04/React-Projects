@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Forms from "../components/Forms";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import UpdateForm from "../components/UpdateForm";
 
 const Update = () => {
   const { id } = useParams();
@@ -10,20 +11,23 @@ const Update = () => {
   const [flowers, setFlowers] = useState([]);
 
   useEffect(() => {
-    async function getUpdateData() {
-      const res = await axios.put(
+    async function getData() {
+      const res = await axios.get(
         `https://69d33482336103955f8ea792.mockapi.io/yes/addFlower/${id}`,
       );
-      setFlowers(res.data);
+      const response = await res.data;
+      setFlowers(response);
     }
-    getUpdateData();
+    getData();
   }, [id]);
+
+  console.log(flowers);
 
   if (flowers.length == 0) return;
 
   return (
     <div>
-      <Forms flowers={flowers} />
+      <UpdateForm flowers={flowers} />
     </div>
   );
 };

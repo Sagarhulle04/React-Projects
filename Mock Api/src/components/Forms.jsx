@@ -8,9 +8,6 @@ function Forms({ flowers }) {
   const { submitData, name, setName, price, setPrice, image, setImage } =
     useProduct();
 
-  const { update } = useProduct();
-  console.log(update);
-
   return (
     <div>
       <Form
@@ -21,7 +18,7 @@ function Forms({ flowers }) {
           <Form.Label>Flower Name</Form.Label>
           <Form.Control
             type="text"
-            value={update ? flowers.name : name}
+            value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter flower name"
           />
@@ -32,7 +29,7 @@ function Forms({ flowers }) {
           <Form.Label>Image URL</Form.Label>
           <Form.Control
             type="text"
-            value={update ? flowers.image : image}
+            value={image}
             onChange={(e) => setImage(e.target.value)}
             placeholder="Image URL"
           />
@@ -42,7 +39,7 @@ function Forms({ flowers }) {
           <Form.Label>Price</Form.Label>
           <Form.Control
             type="number"
-            value={update ? flowers.price : price}
+            value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder=""
           />
