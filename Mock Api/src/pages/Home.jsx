@@ -21,7 +21,7 @@ const Home = () => {
       }
     }
     getData();
-  }, [flowersData]);
+  }, []);
 
   async function handleDelete(id) {
     await axios.delete(
