@@ -10,7 +10,6 @@ const UpdateForm = ({ flowers }) => {
 
   const navigate = useNavigate();
 
-  // ✅ Populate form when data arrives
   useEffect(() => {
     if (flowers) {
       setName(flowers.name);
@@ -19,7 +18,6 @@ const UpdateForm = ({ flowers }) => {
     }
   }, [flowers]);
 
-  // ✅ Update API call
   async function getUpdateData(e) {
     e.preventDefault();
 
