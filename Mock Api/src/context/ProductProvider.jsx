@@ -4,25 +4,19 @@ import { createContext, useContext, useState } from "react";
 const ProductContext = createContext();
 
 function ProductProvider({ children }) {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
-  const [price, setPrice] = useState(0);
   const [update, setUpdate] = useState(false);
 
-  async function submitData(e) {
+  async function submitData(e, formData) {
     e.preventDefault();
-    if (!name || !image || !price) {
-      alert("Enter all the fields");
-      return;
-    }
+
+    const { name, price, image } = formData;
+
     await axios.post(
       "https://69d33482336103955f8ea792.mockapi.io/yes/addFlower",
       { name, price, image },
     );
+
     alert("Flower added successfully");
-    setName("");
-    setImage("");
-    setPrice("");
   }
 
   function handleUpdate() {
@@ -32,12 +26,6 @@ function ProductProvider({ children }) {
   return (
     <ProductContext.Provider
       value={{
-        name,
-        setName,
-        image,
-        setImage,
-        price,
-        setPrice,
         submitData,
         update,
         setUpdate,

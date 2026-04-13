@@ -4,14 +4,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useProduct } from "../context/ProductProvider";
 
-function Forms({ flowers }) {
-  const { submitData, name, setName, price, setPrice, image, setImage } =
-    useProduct();
+function Forms() {
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
+  const { submitData } = useProduct();
 
   return (
     <div>
       <Form
-        onSubmit={submitData}
+        onSubmit={(e) => submitData(e, { name, price, image })}
         className="w-50 mx-auto border  border-black p-3 rounded-2"
       >
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -35,13 +37,13 @@ function Forms({ flowers }) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" controlId="formBasicPrice">
           <Form.Label>Price</Form.Label>
           <Form.Control
-            type="number"
+            type="text"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            placeholder=""
+            placeholder="enter price"
           />
         </Form.Group>
 
