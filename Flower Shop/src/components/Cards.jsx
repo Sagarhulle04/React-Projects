@@ -9,7 +9,7 @@ function Cards({ flower, onDelete, onEdit }) {
     <div className="p-3">
       <Card style={{ width: "18rem", cursor: "pointer" }}>
         <div style={{ position: "relative" }}>
-          <Card.Img src={photo} />
+          <Card.Img src={photo} style={{ height: "16rem" }} />
 
           <GoPencil
             size={30}
