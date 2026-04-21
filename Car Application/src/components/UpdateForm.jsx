@@ -8,37 +8,65 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function UpdateForm() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [car, setCar] = useState([]);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getCarIdDetails() {
-      const res = await axios.get(`http://localhost:3000/${id}`, {
-        withCredentials: true,
-      });
-      setCar(res.data.data);
-      console.log(res.data.data);
+      try {
+        const res = await axios.get(`http://localhost:3000/${id}`, {
+          withCredentials: true,
+        });
+
+        // ✅ because API returns array
+        const data = res.data.data[0];
+
+        if (data) {
+          setName(data.name || "");
+          setImage(data.image || "");
+          setDescription(data.description || "");
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("Failed to fetch car details");
+      } finally {
+        setLoading(false);
+      }
     }
+
     getCarIdDetails();
   }, [id]);
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     try {
-      await axios.post(
-        "http://localhost:3000/",
-        { name, image, description },
-        { withCredentails: true },
+      await axios.put(
+        `http://localhost:3000/update/${id}`,
+        {
+          name,
+          image,
+          description,
+        },
+        {
+          withCredentials: true,
+        },
       );
-      toast.success("Car Added Successfully");
+
+      toast.success("Car Updated Successfully");
       navigate("/");
     } catch (error) {
-      alert(error.message);
+      console.error(error);
+      toast.error("Update failed");
     }
+  }
+
+  if (loading) {
+    return <h3 style={{ textAlign: "center" }}>Loading...</h3>;
   }
 
   return (
@@ -48,41 +76,47 @@ function UpdateForm() {
     >
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Enter Car Information</Modal.Title>
+          <Modal.Title>Update Car Information</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            {/* Name */}
+            <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                value={car.name}
+                value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Name"
+                placeholder="Enter car name"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Image</Form.Label>
+            {/* Image */}
+            <Form.Group className="mb-3">
+              <Form.Label>Image URL</Form.Label>
               <Form.Control
                 type="text"
+                value={image}
                 onChange={(e) => setImage(e.target.value)}
-                placeholder="IMAGE URL..."
+                placeholder="Enter image URL"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            {/* Description */}
+            <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
+                value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Description"
+                placeholder="Enter description"
               />
             </Form.Group>
+
             <Modal.Footer>
               <Button variant="outline-primary" type="submit">
-                Add
+                Update
               </Button>
             </Modal.Footer>
           </Form>
