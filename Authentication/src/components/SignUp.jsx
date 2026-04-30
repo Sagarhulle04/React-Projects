@@ -19,7 +19,7 @@ function SignUp() {
     try {
       if (!signInForm) {
         await axios.post(
-          "http://localhost:3000/register",
+          "https://nodejs-uqbq.onrender.com/register",
           { name, email, password },
           { withCredentials: true },
         );
@@ -29,7 +29,7 @@ function SignUp() {
         setPassword("");
       } else {
         await axios.post(
-          "http://localhost:3000/login",
+          "https://nodejs-uqbq.onrender.com/login",
           { email, password },
           { withCredentials: true },
         );
